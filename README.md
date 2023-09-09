@@ -1,3 +1,3 @@
-# CS1027
+# Secret Computer Science Course
 
-The CS1027 repo is designed to remotely store assignments for work across multiple machines. CS1027 is a computer science course taught at Western University. I really wanna play Raise a Peter. This is a personal repo, but feel free to look through the assignments, even though they will probably really bad.
+The repo is designed to store assignments for work across multiple machines remotely. I really want to play Raise a Peter. This is a personal repo, but feel free to review the assignments, even though they will probably be really bad.
