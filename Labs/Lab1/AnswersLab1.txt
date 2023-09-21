@@ -6,20 +6,37 @@ PRE-LAB
 
 1. What information is needed in a method's javadoc? What tags will you need to use?
 
+Information needed:
+	You need the name of the author, the parameters that the method takes, and the return value.
+	First, identify the creater of the method,
+	Name the parameter and what it represents,
+	Explain what the return value is
+
+Tags:
+	@author
+	@param
+	@return
 
 
 EXERCISE 1
 
 2. Why do we need to use the "this" keyword? What happens if we don't use it?
 
-
+The "this" keyword removes ambiguity from instance variables and method parameters.
+If there is no ambiguity, we may omit this.
+However, if for example, an instance variable and a parameter share the same name, then ommiting "this" will
+result in unwanted results (or something).
 
 EXERCISE 2
 
 3. What do you expect to be printed out in Step 11 ("Same player" or "Different player")?
 
-
+Expected output: "Same player"
+Prediction was wrong
 
 EXERCISE 3
 
 4. Which class contains the equals() method being called here? Is it calling itself?
+
+The equals() method being called comes from the String class.
+It is not calling itself. In this case, eqauls() is a built-in java method for String objects.
