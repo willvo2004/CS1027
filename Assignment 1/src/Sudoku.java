@@ -19,18 +19,19 @@ public class Sudoku {
     public int getDigitAt (int row, int col) {
         // try-catch block handle exception when class compiles
         try {
-            return this.grid[row][col];
+            return this.grid[row - 1][col - 1];
         } catch (ArrayIndexOutOfBoundsException e) {
             return -1;
         }
     }
 
     public boolean isValidRow (int row) {
-
+        // determine if row at index row follows rule of sudoku
+        return true;
     }
 
     public boolean isValidCol (int col) {
-
+        return true;
     }
 
     public boolean isValidBox (int row, int col) {
