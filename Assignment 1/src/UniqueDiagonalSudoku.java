@@ -1,4 +1,4 @@
-public class UniqueDiagonalSudoku {
+public class UniqueDiagonalSudoku extends Sudoku {
 
 
 }
