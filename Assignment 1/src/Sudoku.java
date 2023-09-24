@@ -42,6 +42,24 @@ public class Sudoku {
         return true;
     }
 
+    public boolean isValidCol (int col) {
 
+    }
+
+    public boolean isValidBox (int row, int col) {
+
+    }
+
+    public boolean isValidSolution () {
+
+    }
+
+    public boolean equals (Sudoku other) {
+
+    }
+
+    public String toString () {
+
+    }
 
 }
