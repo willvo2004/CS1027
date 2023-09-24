@@ -8,7 +8,7 @@ public class myTest {
                 {5, 6, 7, 8, 9, 1, 2, 3, 4}
         };
         Sudoku thing = new Sudoku(g1);
-        System.out.print(thing.getDigitAt(6,1));
+        System.out.print(thing.isValidRow(3));
 
     }
 }

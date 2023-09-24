@@ -26,28 +26,22 @@ public class Sudoku {
     }
 
     public boolean isValidRow (int row) {
-        // determine if row at index row follows rule of sudoku
+        // determine if row at index row follows rule of sudoku this method doesnt work, fix later
+        int[] checker = new int[this.grid[row - 1].length];
+        int j;
+        for (int i = 0; i < this.grid[row].length; i++) {
+            checker[i] = this.grid[row - 1][i];
+            j = i + 1;
+            while (j < this.grid[row - 1].length && this.grid[row - 1][j] != checker[i]) {
+                j ++;
+            }
+            if (this.grid[row - 1][j] == checker[i]) {
+                return false;
+            }
+        }
         return true;
     }
 
-    public boolean isValidCol (int col) {
-        return true;
-    }
 
-    public boolean isValidBox (int row, int col) {
-
-    }
-
-    public boolean isValidSolution () {
-
-    }
-
-    public boolean equals (Sudoku other) {
-
-    }
-
-    public String toString () {
-
-    }
 
 }
