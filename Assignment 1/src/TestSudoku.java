@@ -66,7 +66,9 @@ public class TestSudoku {
                 {9, 1, 2, 3, 4, 5, 6, 7, 8}
         };
 
-        boolean b1, b2, b3;
+        boolean b1;
+        boolean b2;
+        boolean b3;
 
         Sudoku s1 = new Sudoku(g1);
         Sudoku s2 = new Sudoku(g2);
