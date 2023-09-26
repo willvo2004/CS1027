@@ -68,13 +68,27 @@ public class Sudoku {
     }
 
     public boolean isValidBox (int row, int col) {
-        // row and col will always be the top left corner of the grid. So to get the whole grid
-        // we just need to go 2 to the right and 2 down from the specified row and col
-        int[][] grid = new int[3][3];
-        int[] checker = new int[9]; // assuming grid is always 3x3
+        int[] boxRow = new int[9]; // assuming grid is always 3x3
+        int index = 0;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
-                grid[i + 1][j + 1] = this.grid[row + i][col + j];
+                boxRow[index++] = this.grid[row + i][col + j]; // 3x3 grid is valid nvm this is better
+            }
+        }
+        int[] checker = new int[boxRow.length];
+        int j = 0;
+        for (int i = 0; i < boxRow.length; i++) {
+            checker[i] = boxRow[i];
+            if (i < boxRow.length - 1) {
+                j = i + 1;
+            } else {
+                return true;
+            }
+            while (j != boxRow.length - 1 && checker[i] != boxRow[j]) {
+                j ++;
+            }
+            if (checker[i] == boxRow[j]) {
+                return false;
             }
         }
         return true;
@@ -86,7 +100,6 @@ public class Sudoku {
     }
 
     public boolean equals (Sudoku other) {
-
         return this.grid.equals(other.getGrid());
     }
 
