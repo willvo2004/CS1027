@@ -12,8 +12,8 @@ public class myTest {
                 {9, 1, 2, 3, 4, 5, 6, 7, 8}
         };
         Sudoku thing = new Sudoku(g1);
-        System.out.println(thing.isValidRow(3));
-        System.out.println(thing.toString());
+        System.out.println(thing.isValidBox(1,1));
+        //System.out.println(thing.toString());
 
     }
 }
