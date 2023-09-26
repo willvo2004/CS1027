@@ -71,7 +71,7 @@ public class Sudoku {
 
             }
         }
-        return digits;
+        return digits.strip();
     }
 
 }
