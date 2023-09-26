@@ -26,13 +26,17 @@ public class Sudoku {
     }
 
     public boolean isValidRow (int row) {
-        // determine if row at index row follows rule of sudoku this method doesnt work, fix later
+        // determine if row has duplicates. Method appears to be working.
         int[] checker = new int[this.grid[row - 1].length];
         int j;
-        for (int i = 0; i < this.grid[row].length; i++) {
+        for (int i = 0; i < this.grid[row - 1].length; i++) {
             checker[i] = this.grid[row - 1][i];
-            j = i + 1;
-            while (j < this.grid[row - 1].length && this.grid[row - 1][j] != checker[i]) {
+            if (i < this.grid[row - 1].length - 1) {
+                j = i + 1;
+            } else {
+                return true;
+            }
+            while (this.grid[row - 1][j] != checker[i] && j != this.grid[row - 1].length - 1) {
                 j ++;
             }
             if (this.grid[row - 1][j] == checker[i]) {
@@ -43,23 +47,31 @@ public class Sudoku {
     }
 
     public boolean isValidCol (int col) {
-
+        return true;
     }
 
     public boolean isValidBox (int row, int col) {
-
+        return true;
     }
 
     public boolean isValidSolution () {
-
+        return true;
     }
 
     public boolean equals (Sudoku other) {
-
+        return this.grid.equals(other.getGrid());
     }
 
     public String toString () {
+        String digits = "";
+        for (int i = 0; i < this.grid.length; i ++) {
+            digits = digits.strip() + "\n";
+            for (int j = 0; j < this.grid[i].length; j ++) {
+                digits += String.valueOf(this.grid[i][j]) + " ";
 
+            }
+        }
+        return digits;
     }
 
 }
