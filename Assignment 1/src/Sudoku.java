@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-
 public class Sudoku {
 
     private int size;
@@ -20,28 +18,33 @@ public class Sudoku {
 
     public int getDigitAt (int row, int col) {
         try {
-            return this.grid[row - 1][col - 1];
+            return this.grid[row][col];
         } catch (ArrayIndexOutOfBoundsException e) {
             return -1;
         }
     }
 
     public boolean isValidRow (int row) {
-        // determine if row has duplicates. Method appears to be working. Ask if try and catch block is needed for exception
+        // determine if row has duplicates. Method appears to be working. Also if there are illegal digits
         try {
-            int[] checker = new int[this.grid[row - 1].length];
+            int min = 1;
+            int max = this.grid.length;
+            int[] checker = new int[this.grid[row].length];
             int j;
-            for (int i = 0; i < this.grid[row - 1].length; i++) {
-                checker[i] = this.grid[row - 1][i];
-                if (i < this.grid[row - 1].length - 1) {
+            for (int i = 0; i < this.grid[row].length; i++) {
+                checker[i] = this.grid[row][i];
+                if (i < this.grid[row].length - 1) {
                     j = i + 1;
                 } else {
                     return true;
                 }
-                while (this.grid[row - 1][j] != checker[i] && j != this.grid[row - 1].length - 1) {
+                if (checker[i] < min || checker[i] > max) {
+                    return false;
+                }
+                while (this.grid[row][j] != checker[i] && j != this.grid[row].length - 1) {
                     j ++;
                 }
-                if (this.grid[row - 1][j] == checker[i]) {
+                if (this.grid[row][j] == checker[i]) {
                     return false;
                 }
             }
@@ -55,19 +58,24 @@ public class Sudoku {
     public boolean isValidCol (int col) {
         // same thing but this time use col numbers. Method seems to be working
         try {
+            int min = 1;
+            int max = this.grid.length;
             int[] checker = new int[this.grid.length]; // okay if every grid is a square
             int j;
             for (int i = 0; i < this.grid.length; i ++) {
-                checker[i] = this.grid[i][col - 1]; // okay
-                if (i < this.grid[col - 1].length - 1) {
+                checker[i] = this.grid[i][col];
+                if (i < this.grid[col].length - 1) {
                     j = i + 1;
                 } else {
                     return true;
                 }
-                while (checker[i] != this.grid[j][col - 1] && j != this.grid.length -1) {
+                if (checker[i] < min || checker[i] > max) {
+                    return false;
+                }
+                while (checker[i] != this.grid[j][col] && j != this.grid.length -1) {
                     j ++;
                 }
-                if (this.grid[j][col - 1] == checker[i]) {
+                if (this.grid[j][col] == checker[i]) {
                     return false;
                 }
             }
@@ -80,10 +88,12 @@ public class Sudoku {
 
     public boolean isValidBox (int row, int col) {
         try {
+            int min = 1;
+            int max = this.grid.length;
             int[] boxRow = new int[9]; // assuming grid is always 3x3
             int index = 0;
-            for (int i = -1; i <= 1; i++) {
-                for (int j = -1; j <= 1; j++) {
+            for (int i = 0; i <= 2; i++) {
+                for (int j = 0; j <= 2; j++) {
                     boxRow[index++] = this.grid[row + i][col + j]; // 3x3 grid is valid nvm this is better
                 }
             }
@@ -95,6 +105,9 @@ public class Sudoku {
                     j = i + 1;
                 } else {
                     return true;
+                }
+                if (checker[i] < min || checker[i] > max) {
+                    return false;
                 }
                 while (j != boxRow.length - 1 && checker[i] != boxRow[j]) {
                     j ++;
@@ -115,7 +128,7 @@ public class Sudoku {
         int rowChecker = 0;
         int colChecker = 0;
         int boxChecker = 0;
-        for (int i = 1; i < this.grid.length + 1; i++) {
+        for (int i = 0; i < this.grid.length + 1; i++) {
             if (isValidRow(i)) {
                 rowChecker ++;
             }
@@ -123,35 +136,51 @@ public class Sudoku {
                 colChecker ++;
             }
         }
-
         if (this.grid.length == 9) {
-            for (int i = 1; i < this.grid.length + 1; i+= 3) {
-                for (int j = 1; j < this.grid.length + 1; j += 3) {
+            for (int i = 0; i < 10; i+= 3) {
+                for (int j = 0; j < 10; j += 3) {
                     if (isValidBox(i,j)) {
                         boxChecker ++;
                     }
                 }
             }
-            if (rowChecker != this.grid.length && colChecker != this.grid.length && boxChecker != this.grid.length) {
+            if (boxChecker != 9 || colChecker != 9 || rowChecker != 9) {
                 return false;
             }
         }
-        if (rowChecker != this.grid.length && colChecker != this.grid.length) {
+        if (rowChecker != this.grid.length || colChecker != this.grid.length) {
             return false;
         }
         return true;
     }
 
     public boolean equals (Sudoku other) {
-        return this.grid.equals(other.getGrid());
+        int[][] otherGrid = other.getGrid();
+
+        if (this.grid.length != otherGrid.length) {
+            return false;
+        }
+
+        for (int i = 0; i < this.grid.length; i++) {
+            if (this.grid[i].length != otherGrid[i].length) {
+                return false;
+            }
+
+            for (int j = 0; j < this.grid[i].length; j++) {
+                if (this.grid[i][j] != otherGrid[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public String toString () {
         String digits = "";
         for (int i = 0; i < this.grid.length; i ++) {
-            digits = digits.strip() + "\n";
+            digits = digits + "\n";
             for (int j = 0; j < this.grid[i].length; j ++) {
-                digits += String.valueOf(this.grid[i][j]) + " ";
+                digits += this.grid[i][j] + " ";
 
             }
         }

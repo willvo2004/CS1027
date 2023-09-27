@@ -107,7 +107,7 @@ public class TestSudoku {
         if (b1 && b2 && b3) {
             System.out.println("Test 2 Passed");
         } else {
-            System.out.println("Test 2 Failed");
+            System.out.println("Test 2 Failed" + b1 + b2 + b3);
         }
 
 
@@ -133,7 +133,7 @@ public class TestSudoku {
         if (b1 && b2) {
             System.out.println("Test 3 Passed");
         } else {
-            System.out.println("Test 3 Failed");
+            System.out.println("Test 3 Failed" + b1 + b2);
         }
 
 
