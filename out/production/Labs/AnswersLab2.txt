@@ -1,0 +1,61 @@
+Answers for Lab 2
+-----------------------------------------------
+
+
+
+EXERCISE 1
+
+1. Should instance variable interestRate be declared as static? Explain.
+
+It should not be declared as static because We should have that every instance of the class SavingsAccount
+should have its own unique interest rate.
+
+2. Write the output from the test harness for class SavingsAccount. 
+
+SavingsAccount: Balance $115.0, interest rate 0.15
+
+EXERCISE 2
+
+3. Which method(s) of the class CheckingAccount demonstrate overriding? Which methods demonstrate overloading?
+Overriding: Deposit, withdraw and toString. There are no overloaded methods
+
+4. Is bacc0 = chacc1 legal? Why?
+Legal:
+This is allowed in Java because a child class object is also an instance of its parent class due to inheritance
+
+5. Is chacc1 = bacc1 legal? Why?
+Illegal:
+This is because the parent class does not have information about the child class.
+A parent class object does not have access to the attributes and behaviors specific to the child class.
+
+6. On which variables bacc1, chacc1, sacc1 was the invocation to method
+deductFees() valid? Explain.
+Is valid on chacc1 because it is an instance of CheckingAccount, which is where the method is defined
+
+7. Which compilation error(s) could be fixed through casting? Which one(s)
+could not be fixed? Why?
+Setting variable to a bank account object would fix the issue. However, setting variable to a savings account object would not fix the error.
+This is because savings account is a child class of bank account, and so any method defined in checking account (also a child of bank account)
+would not be able to be called on an object of a different child class.
+
+8. Why did the program crash? What kind of exception was thrown?
+After commenting out the compilation errors, the program was able to compile and run and no exception was thrown.
+I think in some cases a ClassCastException exception would be thrown at run rime.
+
+9. What was the runtime error obtained when changing super.deposit(amount)
+to deposit(amount) in class CheckingAccount.java? 
+Exception thrown:
+StackOverFlowError
+This error occured because we ommited the 'super' prefix in our deposit method in CheckingAccount.
+What results is the method enters a recursive loop of its self, and without a base case the program
+will run until it crashes or 'overflows'.
+
+
+EXERCISE 3
+
+10. Why does the compiler issue an error message when invoking newAcc.getTransactionCount()? Why does the compiler issue an error message when invoking newAcc.getInterestRate()?
+The reason newAcc.getTransactionCount() and newAcc.getInterestRate() throw compilation errors is because newAcc is declared as a reference of type BankAccount.
+
+11. Can you tell whether in the statement String accountInfo = newAcc.toString(); the
+method toString() being invoked is from the class CheckingAccount or from the class
+SavingsAccount? Explain your answer.
