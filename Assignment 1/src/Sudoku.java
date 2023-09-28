@@ -27,10 +27,10 @@ public class Sudoku {
     public boolean isValidRow (int row) {
         // determine if row has duplicates. Method appears to be working. Also if there are illegal digits
         try {
+            int j;
             int min = 1;
             int max = this.grid.length;
             int[] checker = new int[this.grid[row].length];
-            int j;
             for (int i = 0; i < this.grid[row].length; i++) {
                 checker[i] = this.grid[row][i];
                 if (i < this.grid[row].length - 1) {
@@ -58,10 +58,10 @@ public class Sudoku {
     public boolean isValidCol (int col) {
         // same thing but this time use col numbers. Method seems to be working
         try {
+            int j;
             int min = 1;
             int max = this.grid.length;
             int[] checker = new int[this.grid.length]; // okay if every grid is a square
-            int j;
             for (int i = 0; i < this.grid.length; i ++) {
                 checker[i] = this.grid[i][col];
                 if (i < this.grid[col].length - 1) {
@@ -97,8 +97,8 @@ public class Sudoku {
                     boxRow[index++] = this.grid[row + i][col + j]; // 3x3 grid is valid nvm this is better
                 }
             }
-            int[] checker = new int[boxRow.length];
             int j = 0;
+            int[] checker = new int[boxRow.length];
             for (int i = 0; i < boxRow.length; i++) {
                 checker[i] = boxRow[i];
                 if (i < boxRow.length - 1) {
