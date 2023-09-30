@@ -68,11 +68,19 @@ public class myTest {
         Sudoku s3 = new Sudoku(g3);
         Sudoku s4 = new Sudoku(g4);
         Sudoku s5 = new Sudoku(g5);
+        Sudoku s6 = new Sudoku(g6);
+
+        UniqueDiagonalSudoku u1 = new UniqueDiagonalSudoku(g1); // should be false
+        UniqueDiagonalSudoku u2 = new UniqueDiagonalSudoku(g2); // should be false
+        UniqueDiagonalSudoku u6 = new UniqueDiagonalSudoku(g6); // should be false
+        UniqueDiagonalSudoku u4 = new UniqueDiagonalSudoku(g4);
 
        // System.out.println(s1.isValidRow(0) && s1.isValidRow(8));
        // System.out.println(s3.isValidRow(4) && s3.isValidRow(5));
-        System.out.println(!s5.isValidRow(2)); // returns true, this is not a valid solution
-        System.out.println(!s5.isValidRow(6)); // returns false, this is actually a valid solution
+
+        System.out.println(u6.isValidSolution());
+        System.out.println(s6.isValidSolution());
+
 
     }
 }
