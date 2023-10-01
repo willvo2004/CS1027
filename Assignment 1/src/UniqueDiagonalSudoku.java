@@ -16,40 +16,38 @@ public class UniqueDiagonalSudoku extends Sudoku {
         if (super.isValidSolution()) { // if original rules are true, then we can check diagonal
             int k; // array[k][l]
             int l;
-            int min = 1;
-            int max = super.getGrid().length;
-            int[][] gridGuy = super.getGrid();
-            int[] checkerTL = new int[gridGuy.length];
-            int[] checkerBL = new int[gridGuy.length];
+            int[][] diagonalGrid = super.getGrid();
+            int[] checkerTL = new int[diagonalGrid.length];
+            int[] checkerBL = new int[diagonalGrid.length];
             boolean invalidArrayTL = false;
             boolean invalidArrayBL = false;
-            for (int i = gridGuy.length - 1, j = 0; i >= 0 && (!invalidArrayTL || !invalidArrayBL); i--, j++) {
-                checkerTL[j] = gridGuy[j][j]; // top left - bottom right array
-                checkerBL[j] = gridGuy[i][j]; // bottom left - top right array
+            for (int i = diagonalGrid.length - 1, j = 0; i >= 0 && (!invalidArrayTL || !invalidArrayBL); i--, j++) {
+                checkerTL[j] = diagonalGrid[j][j]; // top left - bottom right array
+                checkerBL[j] = diagonalGrid[i][j]; // bottom left - top right array
 
                 //if (something) then this is true
-                if (j < gridGuy.length - 1 && i > 0) {
+                if (j < diagonalGrid.length - 1 && i > 0) {
                     l = j + 1; // j = l - 1
                     k = i - 1;
                 } else {
                     return true;
                 }
 
-                if ((checkerTL[j] < min) || (checkerTL[j] > max)) {
+                if ((checkerTL[j] < 1) || (checkerTL[j] > super.getSize())) {
                     invalidArrayTL = true;
                 }
-                if ((checkerBL[j] < min) || (checkerTL[j] > max)) {
+                if ((checkerBL[j] < 1) || (checkerTL[j] > super.getSize())) {
                     invalidArrayBL = true;
                 }
-                while ((l < gridGuy.length - 1) && (gridGuy[l][l] != checkerTL[j]) && (gridGuy[k][l] != checkerBL[j])) {
+                while ((l < diagonalGrid.length - 1) && (diagonalGrid[l][l] != checkerTL[j]) && (diagonalGrid[k][l] != checkerBL[j])) {
                     l ++;
                     k --;
                 }
                 // as soon as either checker is invalid, we will exit the loop and then loop over ONLY the still valid array
-                if (gridGuy[l][l] == checkerTL[j]) {
+                if (diagonalGrid[l][l] == checkerTL[j]) {
                     invalidArrayTL = true;
                 }
-                if (gridGuy[k][l] == checkerBL[j]) {
+                if (diagonalGrid[k][l] == checkerBL[j]) {
                     invalidArrayBL = true;
                 }
                 // how can i store the invalid array while the program continues to loop?
@@ -58,42 +56,42 @@ public class UniqueDiagonalSudoku extends Sudoku {
             // for loop exists
             if (invalidArrayBL) {
                 int j;
-                for (int i = 0; i < gridGuy.length; i ++) {
-                    checkerTL[i] = gridGuy[i][i];
+                for (int i = 0; i < diagonalGrid.length; i ++) {
+                    checkerTL[i] = diagonalGrid[i][i];
 
-                    if (i < gridGuy.length - 1) {
+                    if (i < diagonalGrid.length - 1) {
                         j = i + 1;
                     } else {
                         return true;
                     }
-                    if (checkerTL[i] < min || checkerTL[i] > max) {
+                    if (checkerTL[i] < 1 || checkerTL[i] > super.getSize()) {
                         return false;
                     }
-                    while (j < gridGuy.length - 1 && checkerTL[i] !=  gridGuy[j][j]) {
+                    while (j < diagonalGrid.length - 1 && checkerTL[i] !=  diagonalGrid[j][j]) {
                         j ++;
                     }
-                     if (checkerTL[i] == gridGuy[j][j]) {
+                     if (checkerTL[i] == diagonalGrid[j][j]) {
                          return false;
                      }
                 }
             }
             if (invalidArrayTL) {
-                for (int i = gridGuy.length - 1, j = 0; i >= 0; i--, j++ ) {
-                    checkerBL[j] = gridGuy[i][j];
-                    if (j < gridGuy.length - 1 && i > 0) {
+                for (int i = diagonalGrid.length - 1, j = 0; i >= 0; i--, j++ ) {
+                    checkerBL[j] = diagonalGrid[i][j];
+                    if (j < diagonalGrid.length - 1 && i > 0) {
                         l = j + 1;
                         k = i - 1;
                     } else {
                         return true;
                     }
-                    if (checkerBL[j] < min || checkerBL[j] > min) {
+                    if (checkerBL[j] < 1 || checkerBL[j] > super.getSize()) {
                         return false;
                     }
-                    while (l < gridGuy.length - 1 && checkerBL[j] != gridGuy[k][l]) {
+                    while (l < diagonalGrid.length - 1 && checkerBL[j] != diagonalGrid[k][l]) {
                         l ++;
                         k --;
                     }
-                    if (checkerBL[j] == gridGuy[k][l]) {
+                    if (checkerBL[j] == diagonalGrid[k][l]) {
                         return false;
                     }
                 }
