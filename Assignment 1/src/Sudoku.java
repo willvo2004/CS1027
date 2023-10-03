@@ -17,7 +17,7 @@ public class Sudoku {
     /**
      * Constructor creates a sudoku grid by creating a shallow copy of numbers and
      * having a size that is equal to the length of numbers.
-     * @param numbers square-sudoku grid.
+     * @param numbers square-Sudoku grid.
      */
     public Sudoku (int[][] numbers) {
         this.size = numbers.length;
@@ -164,6 +164,8 @@ public class Sudoku {
                         return false;
                     }
                 }
+            } else {
+                return false;
             }
             return true;
         } catch (ArrayIndexOutOfBoundsException e) {

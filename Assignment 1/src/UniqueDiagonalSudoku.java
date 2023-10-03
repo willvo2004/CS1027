@@ -1,9 +1,19 @@
+/**
+ * Child class which inherits from Sudoku and represents a Sudoku grid. Each Sudoku grid
+ * has a size and digits in each column and row between 1 and n.
+ * @author William Vo
+ */
 public class UniqueDiagonalSudoku extends Sudoku {
+
+    /**
+     * Constructor instantiates numbers parameter from Sudoku class.
+     * @param numbers square-Sudoku grid.
+     */
     public UniqueDiagonalSudoku (int[][] numbers) {
         super(numbers);
     }
     /**
-     * In addition to checking if the entire grid abides by the normal rules of Sudoku, it will
+     * Overrides isValidSolution(). In addition to checking if the entire grid abides by the normal rules of Sudoku, it will
      * also check if the main diagonals of the grid abide by the same rules. A valid diagonal
      * has no duplicates and is only between 1 and size n.
      * @return True if every row, column, 3x3 box in a 9x9 grid, and if one or both diagonals are
