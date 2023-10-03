@@ -1,23 +1,23 @@
 /**
  * This class represents a sudoku grid. Each sudoku grid has a size n and
- * digits in each column and row between 1 and n
+ * digits in each column and row between 1 and n.
  * @author William Vo
  */
 public class Sudoku {
 
     /**
-     * Size of the grid
+     * Size of the grid.
      */
     private final int size;
     /**
-     * The sudoku grid
+     * The sudoku grid.
      */
     private final int[][] grid;
 
     /**
      * Constructor creates a sudoku grid by creating a shallow copy of numbers and
-     * having a size that is equal to the length of numbers
-     * @param numbers square-sudoku grid
+     * having a size that is equal to the length of numbers.
+     * @param numbers square-sudoku grid.
      */
     public Sudoku (int[][] numbers) {
         this.size = numbers.length;
@@ -25,26 +25,26 @@ public class Sudoku {
     }
 
     /**
-     * Getter method to access the size of the sudoku grid
-     * @return size of sudoku grid
+     * Getter method to access the size of the sudoku grid.
+     * @return size of sudoku grid.
      */
     public int getSize () {
         return this.size;
     }
 
     /**
-     * Getter method to access the sudoku grid
-     * @return sudoku grid
+     * Getter method to access the sudoku grid.
+     * @return sudoku grid.
      */
     public int[][] getGrid () {
         return this.grid;
     }
 
     /**
-     * Getter method to access the value at a specific row and column
-     * @param row row index of grid
-     * @param col column index of grid
-     * @return value at valid row and column, or -1 if indices are out of range
+     * Getter method to access the value at a specific row and column.
+     * @param row row index of grid.
+     * @param col column index of grid.
+     * @return value at valid row and column, or -1 if indices are out of range.
      */
     public int getDigitAt (int row, int col) {
         try {
@@ -54,6 +54,12 @@ public class Sudoku {
         }
     }
 
+    /**
+     * Checks if a given row index abides by the rules of Sudoku. A valid row has no duplicate digits and
+     * only digits between 1 and size n.
+     * @param row row index of the grid.
+     * @return True if the row has no duplicate digits and is only between 1 and size n. False if otherwise.
+     */
     public boolean isValidRow (int row) {
         try {
             int j;
@@ -84,6 +90,12 @@ public class Sudoku {
         }
     }
 
+    /**
+     * Checks if a given column index abides by the rules of Sudoku. A valid column has no duplicates and
+     * only digits between 1 and size n.
+     * @param col Column index of the grid
+     * @return True if the column has no duplicates and is only between 1 and size n. False if otherwise.
+     */
     public boolean isValidCol (int col) {
         try {
             int j;
@@ -113,6 +125,13 @@ public class Sudoku {
         }
     }
 
+    /**
+     * Checks if 3x3 box in a 9x9 grid abides by the rules of Sudoku. A valid 3x3 box has no duplicates and
+     * only digits between 1 and size n.
+     * @param row Given row index of the grid. Index points to the top left corner of the 3x3 box.
+     * @param col Given column index of the grid. Index points to the top left corner of the 3x3 box.
+     * @return True if the 3x3 box has no duplicates and is only between 1 and size n. False if otherwise.
+     */
     public boolean isValidBox (int row, int col) {
         try {
             if (row % 3 == 0 && col % 3 == 0) {
@@ -152,6 +171,13 @@ public class Sudoku {
         }
     }
 
+    /**
+     * Checks if the entire grid abides by the rules of Sudoku. Each valid row and column has no duplicates and
+     * is only between 1 and size n. If the grid is 9x9, then each valid 3x3 box also has no duplicates and
+     * is only between 1 and size.
+     * @return True if each row, column, and potentially 3x3 box has no duplicates and is only between 1 and size n.
+     * False if otherwise.
+     */
     public boolean isValidSolution () {
         int rowChecker = 0;
         int colChecker = 0;
@@ -180,13 +206,18 @@ public class Sudoku {
         return rowChecker == this.size && colChecker == this.size;
     }
 
+    /**
+     * Compares two Sudoku objects and checks if they are the same grid. That is, they have the same contents.
+     * @param other The Sudoku object to be compared.
+     * @return True if the two Sudoku objects have the same contents. False if otherwise.
+     */
     public boolean equals (Sudoku other) {
         int[][] otherGrid = other.getGrid();
 
-        if (this.grid.length != otherGrid.length) {
+        if (this.size != otherGrid.length) {
             return false;
         }
-        for (int i = 0; i < this.grid.length; i++) {
+        for (int i = 0; i < this.size; i++) {
             if (this.grid[i].length != otherGrid[i].length) {
                 return false;
             }
@@ -199,6 +230,11 @@ public class Sudoku {
         return true;
     }
 
+    /**
+     * toString method to print out meaningful information about the Sudoku grid.
+     * @return Each element spaced out and organized into a nxn grid.
+     * Leading and trailing white spaces are removed.
+     */
     public String toString () {
         String digits = "";
         for (int i = 0; i < this.size; i ++) {

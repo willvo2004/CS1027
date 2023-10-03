@@ -11,10 +11,17 @@ public class UniqueDiagonalSudoku extends Sudoku {
     // {0, 0, 5*, 0, 0, 0, 9*, 0, 0},
     // {0, 7*, 0, 0, 0, 0, 0, 4*, 0},
     // {9*, 0, 0, 0, 0, 0, 0, 0, 8*}
+
+    /**
+     * In addition to checking if the entire grid abides by the normal rules of Sudoku, it will
+     * also check if the main diagonals of the grid abide by the same rules. A valid diagonal
+     * has no duplicates and is only between 1 and size n.
+     * @return True someshit
+     */
     @Override
-    public boolean isValidSolution() { // if atleast 1 diagonal is true and the original rules are also true, then return true
-        if (super.isValidSolution()) { // if original rules are true, then we can check diagonal
-            int k; // array[k][l]
+    public boolean isValidSolution() {
+        if (super.isValidSolution()) {
+            int k;
             int l;
             int[][] diagonalGrid = super.getGrid();
             int[] checkerTL = new int[diagonalGrid.length];
@@ -22,10 +29,9 @@ public class UniqueDiagonalSudoku extends Sudoku {
             boolean invalidArrayTL = false;
             boolean invalidArrayBL = false;
             for (int i = diagonalGrid.length - 1, j = 0; i >= 0 && (!invalidArrayTL || !invalidArrayBL); i--, j++) {
-                checkerTL[j] = diagonalGrid[j][j]; // top left - bottom right array
-                checkerBL[j] = diagonalGrid[i][j]; // bottom left - top right array
+                checkerTL[j] = diagonalGrid[j][j];
+                checkerBL[j] = diagonalGrid[i][j];
 
-                //if (something) then this is true
                 if (j < diagonalGrid.length - 1 && i > 0) {
                     l = j + 1; // j = l - 1
                     k = i - 1;
@@ -43,17 +49,15 @@ public class UniqueDiagonalSudoku extends Sudoku {
                     l ++;
                     k --;
                 }
-                // as soon as either checker is invalid, we will exit the loop and then loop over ONLY the still valid array
+
                 if (diagonalGrid[l][l] == checkerTL[j]) {
                     invalidArrayTL = true;
                 }
                 if (diagonalGrid[k][l] == checkerBL[j]) {
                     invalidArrayBL = true;
                 }
-                // how can i store the invalid array while the program continues to loop?
-                // reach 1 invalid array exit the for loop so that invalid array
+
             }
-            // for loop exists
             if (invalidArrayBL) {
                 int j;
                 for (int i = 0; i < diagonalGrid.length; i ++) {
