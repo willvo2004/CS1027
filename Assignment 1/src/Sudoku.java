@@ -115,36 +115,38 @@ public class Sudoku {
 
     public boolean isValidBox (int row, int col) {
         try {
-            int[] boxRow = new int[9]; // assuming grid is always 3x3
-            int index = 0;
+            if (row % 3 == 0 && col % 3 == 0) {
+                int[] boxRow = new int[9]; // assuming grid is always 3x3
+                int index = 0;
 
-            for (int i = 0; i <= 2; i++) {
-                for (int j = 0; j <= 2; j++) {
-                    boxRow[index++] = this.grid[row + i][col + j]; // 3x3 grid is valid nvm this is better
+                for (int i = 0; i <= 2; i++) {
+                    for (int j = 0; j <= 2; j++) {
+                        boxRow[index++] = this.grid[row + i][col + j]; // 3x3 grid is valid nvm this is better
+                    }
                 }
-            }
-            int j = 0;
-            int[] checker = new int[boxRow.length];
-            for (int i = 0; i < boxRow.length; i++) {
-                checker[i] = boxRow[i];
-                if (i < boxRow.length - 1) {
-                    j = i + 1;
-                } else {
-                    return true;
-                }
-                if (checker[i] < 1 || checker[i] > this.size) {
-                    return false;
-                }
+                int j = 0;
+                int[] checker = new int[boxRow.length];
 
-                while (j != boxRow.length - 1 && checker[i] != boxRow[j]) {
-                    j ++;
-                }
-                if (checker[i] == boxRow[j]) {
-                    return false;
+                for (int i = 0; i < boxRow.length; i++) {
+                    checker[i] = boxRow[i];
+                    if (i < boxRow.length - 1) {
+                        j = i + 1;
+                    } else {
+                        return true;
+                    }
+                    if (checker[i] < 1 || checker[i] > this.size) {
+                        return false;
+                    }
+
+                    while (j != boxRow.length - 1 && checker[i] != boxRow[j]) {
+                        j ++;
+                    }
+                    if (checker[i] == boxRow[j]) {
+                        return false;
+                    }
                 }
             }
             return true;
-
         } catch (ArrayIndexOutOfBoundsException e) {
             return false;
         }
