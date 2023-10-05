@@ -29,12 +29,12 @@ public class UniqueDiagonalSudoku extends Sudoku {
             int[] checkerBL = new int[diagonalGrid.length];
             boolean invalidArrayTL = false;
             boolean invalidArrayBL = false;
-            for (int i = diagonalGrid.length - 1, j = 0; i >= 0 && (!invalidArrayTL || !invalidArrayBL); i--, j++) {
+            for (int i = diagonalGrid.length - 1, j = 0; i >= 0 && (!invalidArrayTL && !invalidArrayBL); i--, j++) {
                 checkerTL[j] = diagonalGrid[j][j];
                 checkerBL[j] = diagonalGrid[i][j];
 
                 if (j < diagonalGrid.length - 1 && i > 0) {
-                    l = j + 1; // j = l - 1
+                    l = j + 1;
                     k = i - 1;
                 } else {
                     return true;

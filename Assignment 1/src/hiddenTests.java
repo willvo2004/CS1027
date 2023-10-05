@@ -11,8 +11,10 @@ public class hiddenTests {
                 {2, 8, 7, 4, 1, 9, 6, 3, 5},
                 {3, 4, 5, 2, 8, 6, 1, 7, 9}
         };
+        int[][] emptyGrid = {};
 
         Sudoku sudoku = new Sudoku(grid);
-        System.out.println(sudoku.isValidSolution());
+        Sudoku emptySudoku = new Sudoku(emptyGrid);
+        System.out.println(sudoku.getDigitAt(sudoku.getSize() - 1, sudoku.getSize() -1 ));
     }
 }
