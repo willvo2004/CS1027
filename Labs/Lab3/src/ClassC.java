@@ -1,7 +1,7 @@
 
 public class ClassC {
 
-	private int counter = 0;
+	private static int counter = 0;
 
 	public ClassC() {
 		counter += 1;

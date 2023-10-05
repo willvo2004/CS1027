@@ -1,3 +1,5 @@
+import javax.xml.crypto.Data;
+
 public class DataTypes {
 	public int intVar;
 	public double doubleVar;
@@ -14,5 +16,13 @@ public class DataTypes {
 		charVar = newCharVar;
 		boolVar = newBoolVar;
 		varA = newVarA;
+	}
+
+	public boolean equals(DataTypes other) {
+		if (this.intVar == other.intVar && this.charVar == other.charVar && this.doubleVar == other.doubleVar && this.boolVar == other.boolVar) {
+			return this.varA.equals(other.varA);
+		} else {
+			return false;
+		}
 	}
 }

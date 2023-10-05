@@ -30,8 +30,8 @@ public class PrimNonPrim {
 		
 		int a = 5;
 		int b = 5;
-		Integer c = new Integer(5);
-		Integer d = new Integer(5);
+		Integer c = 5;
+		Integer d = 5;
 		
 		if (a == b) System.out.println("a == b");
 		if (c == d) System.out.println("c == d");

@@ -12,4 +12,20 @@ public class ClassA {
 		numItems = 0;
 		arrItems = new int[SIZE_ARRAY];
 	}
+
+	public boolean equals(ClassA other) {
+		if (this.numItems == other.numItems) {
+			for (int i = 0; i < this.arrItems.length; i ++) {
+				if (this.arrItems[i] != other.arrItems[i]) {
+					return false;
+				}
+			}
+			if (this.arrItems == null || other.arrItems == null) {
+				return false;
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

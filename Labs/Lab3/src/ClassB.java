@@ -5,7 +5,17 @@ public class ClassB {
 	private static int y;
 
 	public static void main(String[] args) {
-		// Add code in here...
+		ClassB obj = new ClassB();
+		ClassB obj2 = new ClassB();
+		obj2.x = 20;
+		obj.x = 10;
+		y = 30;
+
+
+		System.out.println(obj.x);
+		System.out.println(obj.y);
+		System.out.println(obj2.x);
+		System.out.println(obj2.y);
 
 
 
