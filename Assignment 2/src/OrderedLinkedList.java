@@ -10,13 +10,13 @@ public class OrderedLinkedList<T extends Comparable<T>> {
     public void insert(T newData) { // if x.compareTo(y) > 0, x is larger. y are elements already in the list
 
         Node<T> newNode = new Node<>(newData, null);
-        Node<T> curr = head;
-        Node<T> prev = null;
 
         if (head == null) { // handles null pointer exception
-            head = newNode;
+            head = newNode; //
             return;
         }
+        Node<T> curr = head;
+        Node<T> prev = null;
 
         while (curr.getNext() != null && newData.compareTo(curr.getData()) <= 0) {
             prev = curr;
@@ -61,7 +61,7 @@ public class OrderedLinkedList<T extends Comparable<T>> {
         while (curr != null) {
             counter++;
             if (curr.getNext() == null) {
-                return 1;
+                return counter;
             }
             else {
                 curr = curr.getNext();
