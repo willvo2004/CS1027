@@ -59,7 +59,7 @@ public class OLLTest {
         int[] all = new int[] {x,y};
 
         oll.insert(x);
-        oll.insert(y);
+        oll.insert(y);git
 
         if (oll.getSize()!= 2) {
             return false;

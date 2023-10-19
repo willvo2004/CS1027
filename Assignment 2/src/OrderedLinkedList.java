@@ -24,7 +24,7 @@ public class OrderedLinkedList<T extends Comparable<T>> {
             curr = curr.getNext(); // would this not throw a null pointer exception?
         }
         if (prev == null) {
-            newNode.setNext(curr); // argument can curr or head? Because of line 19?
+            newNode.setNext(head); // argument can curr or head? Because of line 19?
             head = newNode;
         } else {
             newNode.setNext(curr);
