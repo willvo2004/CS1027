@@ -1,5 +1,3 @@
-package testing;
-
 class NewtonTest {
 
     private static final String DIVIDE = "divide by zero error";

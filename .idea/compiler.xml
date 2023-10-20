@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <excludeFromCompile>
-      <file url="file://$PROJECT_DIR$/Assignment 2/src/testing/NewtonTest.java" />
+      <file url="file://$PROJECT_DIR$/Assignment 2/src/NewtonTest.java" />
     </excludeFromCompile>
   </component>
 </project>
