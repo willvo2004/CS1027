@@ -21,10 +21,10 @@ public class OrderedLinkedList<T extends Comparable<T>> {
 
         while (curr != null && newData.compareTo(curr.getData()) <= 0) {
             prev = curr;
-            curr = curr.getNext(); // would this not throw a null pointer exception?
+            curr = curr.getNext();
         }
         if (prev == null) {
-            newNode.setNext(head); // argument can curr or head? Because of line 19?
+            newNode.setNext(head);
             head = newNode;
         } else {
             newNode.setNext(curr);
