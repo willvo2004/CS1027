@@ -35,6 +35,7 @@ public class Polynomial {
 
         for (int i = 0; i < expression.getSize(); i ++) {
 
+            /* The term to be derived is pulled from the terms in the original polynomial*/
             Monomial derivedTerm = expression.get(i);
             int coefficient = derivedTerm.getCoefficient() * derivedTerm.getDegree();
             int degree = derivedTerm.getDegree() - 1;
@@ -57,6 +58,7 @@ public class Polynomial {
 
         for (int i = 0; i < expression.getSize(); i ++) {
 
+            /* The term to be evaluated is pulled from the polynomial from whence it came*/
             Monomial evaluatedTerm = expression.get(i);
 
             if (evaluatedTerm.getDegree() != 0) {
@@ -72,6 +74,7 @@ public class Polynomial {
 
     /**
      * Converts the polynomial to a string representation.
+     * Prints one if it's a coefficient or degree, and zero if it is a degree, as well.
      * @return the string representation of the polynomial
      */
     public String toString () {
@@ -85,9 +88,6 @@ public class Polynomial {
 
             if (i == 0) {
                 polynomial += term.getCoefficient() + "*x^" + term.getDegree();
-            }
-            else if (i != expression.getSize() - 1) {
-                polynomial += ((term.getCoefficient() > 0) ? " + ": " - ") + Math.abs(term.getCoefficient()) + "*x^" + term.getDegree();
             }
             else {
                 polynomial += ((term.getCoefficient() > 0) ? " + ": " - ") + Math.abs(term.getCoefficient()) + "*x^" + term.getDegree();

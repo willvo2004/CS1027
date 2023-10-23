@@ -37,6 +37,7 @@ public class OrderedLinkedList<T extends Comparable<T>> {
         Node<T> curr = head;
         Node<T> prev = null;
 
+        /*  While curr is not null and the new data is smaller than the data in the list, prev moves to curr, and curr moves to its pointer */
         while (curr != null && newData.compareTo(curr.getData()) <= 0) {
             prev = curr;
             curr = curr.getNext();
@@ -60,13 +61,11 @@ public class OrderedLinkedList<T extends Comparable<T>> {
      * @throws IndexOutOfBoundsException if the index is out of range
      */
     public T get(int i) {
-        if (i < 0) {
-            throw new IndexOutOfBoundsException();
-        }
 
         Node<T> curr = head;
         int counter = 0;
 
+        /* While curr is not null, curr traverses the list until the counter is equal to i*/
         while (curr != null) {
             if (counter == i) {
                 return curr.getData();
