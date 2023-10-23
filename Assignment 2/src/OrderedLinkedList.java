@@ -62,6 +62,9 @@ public class OrderedLinkedList<T extends Comparable<T>> {
      */
     public T get(int i) {
 
+        if (i < 0) {
+            throw new IndexOutOfBoundsException();
+        }
         Node<T> curr = head;
         int counter = 0;
 
