@@ -86,12 +86,15 @@ public class Polynomial {
         for (int i = 0; i < expression.getSize(); i ++) {
             Monomial term = expression.get(i);
 
-            if (i == 0) {
-                polynomial += term.getCoefficient() + "*x^" + term.getDegree();
+            if (term.getCoefficient() != 0) {
+                if (i == 0) {
+                    polynomial += term.getCoefficient() + "*x^" + term.getDegree();
+                }
+                else {
+                    polynomial += ((term.getCoefficient() > 0) ? " + ": " - ") + Math.abs(term.getCoefficient()) + "*x^" + term.getDegree();
+                }
             }
-            else {
-                polynomial += ((term.getCoefficient() > 0) ? " + ": " - ") + Math.abs(term.getCoefficient()) + "*x^" + term.getDegree();
-            }
+
         }
         return polynomial;
     }
