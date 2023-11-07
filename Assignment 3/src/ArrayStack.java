@@ -9,22 +9,34 @@ public class ArrayStack<T> implements StackADT<T> {
     }
 
     public void push (T element) {
-        if (top >= (array.length * 0.75)) {
+        if (top + 1 >= (array.length * 0.75)) {
             expandCapacity();
+        } if (top == -1) {
+            array[0] = element;
+            top = 0;
         }
-        array[top] = element;
-        top ++;
+        else {
+            array[top + 1] = element;
+            top ++;
+        }
     }
 
     public T pop() throws StackException {
         if (top == -1) {
-            throw new StackException("Stack is Empty");
+            throw new StackException("Stack is empty");
         }
+        else if (top + 1 <=(array.length * 0.25) && array.length >= 20) {
+            shrinkCapacity();
+        }
+        T element = array[top];
+        array[top] = null;
+        top--;
+        return element;
     }
 
     public T peek() throws StackException {
         if (top == -1) {
-            throw new StackException("Stack is Empty");
+            throw new StackException("Stack is empty");
         }
         return array[top];
     }
@@ -35,8 +47,7 @@ public class ArrayStack<T> implements StackADT<T> {
 
     public int size() {
         int counter = 0;
-        while (top != -1) {
-            top --;
+        while (counter != top + 1) {
             counter++;
         }
         return counter;
@@ -58,19 +69,37 @@ public class ArrayStack<T> implements StackADT<T> {
 
     public String toString() {
         if (top == -1) {
-            return "Empty Stack.";
+            return "Empty stack.";
         }
-        // do some some shinanenges with the thing with a loop and then return it with some question marks
+        String stack = "Stack: ";
+        for (int i = top ; i >= 0; i--) {
+            if (i == 0) {
+                stack += array[i] + ".";
+            } else {
+               // if (array[i] != null) {
+                    stack += array[i] + ", ";
+                //}
+            }
+        }
+        return stack;
+
     }
 
     private void expandCapacity() {
         int newSize = array.length + 10;
-        T[] newArray = (T[]) (new Object[newSize]);
+        T[] newArray = (T[]) new Object[newSize];
 
-        for (int i = 0; i < array.length; i++) {
-            newArray[i] = array[i];
-        }
+        System.arraycopy(array, 0, newArray, 0, array.length);
         array = newArray;
     }
+
+    private void shrinkCapacity() {
+        int newSize = array.length - 10;
+        T[] newArray = (T[]) new Object[newSize];
+
+        System.arraycopy(array, 0, newArray, 0, newArray.length);
+        array = newArray;
+    }
+
 
 }

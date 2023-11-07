@@ -92,7 +92,7 @@ public class TestStack {
 		if (b1 && b2) {
 			System.out.println("TestStack - Test 6 Passed");
 		} else {
-			System.out.println("TestStack - Test 6 Failed");
+			System.out.println("TestStack - Test 6 Failed" + b1 + b2);
 		}
 
 		// ------------------------------------------------
@@ -114,7 +114,7 @@ public class TestStack {
 		if (b1 && b2 && iStack.getCapacity() == 90 && iStack.getTop() == 65) {
 			System.out.println("TestStack - Test 7 Passed");
 		} else {
-			System.out.println("TestStack - Test 7 Failed");
+				System.out.println("TestStack - Test 7 Failed" + b1 + b2 + iStack.getCapacity() + iStack.getTop());
 		}
 
 		// ------------------------------------------------
@@ -136,7 +136,7 @@ public class TestStack {
 		if (b1 && b2 && iStack.size() == 7 && iStack.getCapacity() == 30) {
 			System.out.println("TestStack - Test 8 Passed");
 		} else {
-			System.out.println("TestStack - Test 8 Failed");
+			System.out.println("TestStack - Test 8 Failed" + b1 + b2 + iStack.size() + iStack.getCapacity());
 		}
 
 		// ------------------------------------------------
