@@ -76,9 +76,7 @@ public class ArrayStack<T> implements StackADT<T> {
             if (i == 0) {
                 stack += array[i] + ".";
             } else {
-               // if (array[i] != null) {
                     stack += array[i] + ", ";
-                //}
             }
         }
         return stack;
