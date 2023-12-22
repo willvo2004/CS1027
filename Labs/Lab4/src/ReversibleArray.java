@@ -1,7 +1,7 @@
 public class ReversibleArray<T> {
 
-    private T[] array;
-    private int count;
+    private final T[] array;
+    private final int count;
 
     public ReversibleArray(T[] array) {
         this.array = array;

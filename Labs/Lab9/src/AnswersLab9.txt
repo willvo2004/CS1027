@@ -1,0 +1,26 @@
+Answers for Lab 9
+-----------------------------------------------
+
+
+EXERCISE 1
+
+
+1. Why do the iterative methods (ifib() and ifact()) require so many variables? How do the recursive methods work without so many variables?
+
+
+
+2. What are the base cases of the recursive methods (rfib() and rfact())?
+
+
+
+3. What pattern did notice with the running times of FactorialDemo with various input numbers?
+
+
+
+4. What pattern did notice with the running times of FibonacciDemo with various input numbers?
+
+
+
+5. How many times is rfib(2) called during the execution of rfib(40)? Why is the execution of this program so slow?
+
+

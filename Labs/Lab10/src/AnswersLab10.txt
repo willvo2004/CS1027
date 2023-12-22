@@ -1,0 +1,46 @@
+Answers for Lab 10
+-----------------------------------------------
+
+EXERCISE 1
+
+1. What should the return type be in each of the following methods?
+
+getData() --> T
+getLeft() --> BinaryTreeNode
+getRight() --> BinaryTreeNode
+
+
+
+2. What should the parameter type be in each of the following methods?
+
+setData() --> T
+setLeft() --> BinaryTreeNode
+setRight() --> BinaryTeeNode
+
+
+
+3. What would need to be added/removed/changed to make this class work for a more general tree such that each node could have more than 2 nodes?
+
+You would need an additional getter method, as well as an additional setter method
+
+EXERCISE 2
+
+4. What is the base case of the size() method? What are the recursive cases?
+
+The base case would be when r is equal to null, which would indicate an empty subtree.
+The recursive cases would be counting the nodes in the left and right subtrees
+
+5. What is the main difference between the 3 methods: inorder(), preorder(), and postorder()?
+
+preorder traversal visits the parent node first, before visiting the left and right children nodes
+postorder traversal visits the left and right subtrees before visiting the parent node.
+inorder traversal visits the left subtree, then the parent node, and then the right subtree.
+
+6. In the recFormatTree() method, what is the space parameter used for? What is the default value when this method is first called? What is being concatenated to this space value in the recursive calls? Does this make sense for how the tree is being displayed?
+
+
+
+EXERCISE 3
+
+7. How can you tell if a given node is a leaf node?
+

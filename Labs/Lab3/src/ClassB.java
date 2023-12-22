@@ -13,9 +13,9 @@ public class ClassB {
 
 
 		System.out.println(obj.x);
-		System.out.println(obj.y);
+		System.out.println(y);
 		System.out.println(obj2.x);
-		System.out.println(obj2.y);
+		System.out.println(y);
 
 
 

@@ -35,7 +35,7 @@ public class BuildLinkedList {
 
 		for (int i = 8; i >= 1; i--) {
 			// create a new node for i
-			intNode = new LinearNode<Integer>(new Integer(i));
+			intNode = new LinearNode<Integer>(Integer.valueOf(i));
 			// add it at the head of the linked list
 			intNode.setNext(front);
 			front = intNode;

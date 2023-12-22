@@ -16,7 +16,7 @@ public class MineEscape {
     }
 
     public MapCell findNextCell (MapCell cell) {
-        MapCell[] cellNeighbors = new MapCell[4];
+        MapCell[] cellNeighbors = new MapCell[4]; // declare new mapCell array which has a bunch of neighbors
         for (int i = 0; i < 4; i ++) {
             if (walkableCellCheck(cell)) {
                 cellNeighbors[i] = cell.getNeighbour(i); // add cells to an array
@@ -26,7 +26,7 @@ public class MineEscape {
         int collectableCells = 0;
         int floorCells = 0;
         int lockCells = 0;
-        for (int i = 0; i < cellNeighbors.length; i++) {
+        for (int i = 0; i < 4; i++) {
             if (cellNeighbors[i] != null) {
 
                 if (cellNeighbors[i].isExit()) {
@@ -44,7 +44,7 @@ public class MineEscape {
             }
         }
         if (collectableCells >= 1) {
-            for (int i = 0; i < cellNeighbors.length; i++) {
+            for (int i = 0; i < 4; i++) {
                 if (cellNeighbors[i] != null) {
                     if (cellNeighbors[i].isGoldCell() || cellNeighbors[i].isKeyCell()) {
                         return cellNeighbors[i]; // should return the lowest index?
@@ -53,7 +53,7 @@ public class MineEscape {
             }
         }
         else if (floorCells >= 1) {
-            for (int i = 0; i < cellNeighbors.length; i++) {
+            for (int i = 0; i < 4; i++) {
                 if (cellNeighbors[i] != null) {
                     if (cellNeighbors[i].isFloor()) {
                         return cellNeighbors[i]; // should return the lowest index?
@@ -62,7 +62,7 @@ public class MineEscape {
             }
         }
         else if (lockCells >= 1) {
-            for (int i = 0; i < cellNeighbors.length; i++ ) {
+            for (int i = 0; i < 4; i++ ) {
                 if (cellNeighbors[i] != null) {
                     if (cellNeighbors[i].isLockCell()) {
                         if (cellNeighbors[i].isRed() && numKeys[0] > 0) {
@@ -105,13 +105,17 @@ public class MineEscape {
                 else if (curr.isBlue()) {
                     numKeys[2] ++;
                 }
+                curr.changeToFloor();
             }
             else if (curr.isGoldCell()) {
                 numGold ++;
+                curr.changeToFloor();
             }
             for (int i = 0; i < 4; i ++) {
-                if (curr.getNeighbour(i).isLava()) {
-                    numGold = 0;
+                if (curr.getNeighbour(i) != null) {
+                    if (curr.getNeighbour(i).isLava()) {
+                        numGold = 0;
+                    }
                 }
             }
             MapCell next = findNextCell(curr);
@@ -139,6 +143,16 @@ public class MineEscape {
     }
 
     private boolean walkableCellCheck(MapCell cell) {
-        return !(cell.isWall() && cell.isLava() && cell.isMarked()); //
+        return !(cell.isWall() && cell.isLava() && cell.isMarked());
+    }
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.print("Map file not given in the arguments.");
+        } else {
+            MineEscape search = new MineEscape(args[0]);
+            String result = search.findEscapePath();
+            System.out.println(result);
+        }
     }
 }

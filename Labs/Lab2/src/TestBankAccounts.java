@@ -11,16 +11,16 @@ public class TestBankAccounts {
     public static void main(String[] args) {
       
         BankAccount bacc0 = new BankAccount(0);
-        System.out.println(bacc0.toString());
+        System.out.println(bacc0);
         
         BankAccount bacc1 = new BankAccount(5000);
-        System.out.println(bacc1.toString());
+        System.out.println(bacc1);
         
         CheckingAccount chacc1 = new CheckingAccount(500.0);
-        System.out.println(chacc1.toString());
+        System.out.println(chacc1);
                           
         SavingsAccount sacc1 = new SavingsAccount(1000.0, 1.0);
-        System.out.println(sacc1.toString()); 
+        System.out.println(sacc1);
         
         //-------------------------------------------------------
         // add your code here
@@ -35,7 +35,7 @@ public class TestBankAccounts {
         //sacc1.deductFees();
         ((CheckingAccount)bacc1).deductFees();
         ((CheckingAccount)bacc2).deductFees();
-        ((CheckingAccount)chacc1).deductFees();
+        chacc1.deductFees();
         //((CheckingAccount)sacc1).deductFees();
 
         chacc1.deposit(100.0);

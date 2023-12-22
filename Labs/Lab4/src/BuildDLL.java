@@ -2,7 +2,7 @@
 public class BuildDLL {
 	
 	private DoubleLinkedNode<Character> front, rear;
-	private static char[] letters = new char[] {'K', 'T', 'E', 'N', 'P', 'A', 'L'};
+	private static final char[] letters = new char[] {'K', 'T', 'E', 'N', 'P', 'A', 'L'};
 
 	public BuildDLL () {
 		build();

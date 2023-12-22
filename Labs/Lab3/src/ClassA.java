@@ -20,11 +20,8 @@ public class ClassA {
 					return false;
 				}
 			}
-			if (this.arrItems == null || other.arrItems == null) {
-				return false;
-			}
-			return true;
-		} else {
+            return this.arrItems != null && other.arrItems != null;
+        } else {
 			return false;
 		}
 	}

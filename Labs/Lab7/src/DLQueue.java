@@ -1,5 +1,5 @@
 
-public class DLQueue<T> implements QueueADT<T> {
+public class DLQueue<T> implements QueueADTa<T> {
 
 	private int count;
 	private DoubleNode<T> front, rear;

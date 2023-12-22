@@ -17,7 +17,7 @@ public class ClassC {
 		}
 		
 		System.out.println(N);
-		System.out.println(obj.counter);
+		System.out.println(counter);
 		
 	}
 	

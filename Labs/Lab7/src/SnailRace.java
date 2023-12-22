@@ -1,6 +1,6 @@
 public class SnailRace {
 	
-	private Snail[] participants;
+	private final Snail[] participants;
 	public static int raceLength;
 	
 	public SnailRace () {
@@ -33,9 +33,10 @@ public class SnailRace {
 			}
 			
 			for (int i = 0; i < participants.length; i++) {
-				if (participants[i].getPosition() == raceLength) {
-					racing = false;
-				}
+                if (participants[i].getPosition() == raceLength) {
+                    racing = false;
+                    break;
+                }
 			}
 			
 			display();

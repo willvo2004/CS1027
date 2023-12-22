@@ -6,8 +6,8 @@
 public class Person {
 	
 	/* Attribute declarations */
-	private String lastName;	// last name
-	private String firstName;	// first name
+	private final String lastName;	// last name
+	private final String firstName;	// first name
 	
 	/**
 	 * Constructor initializes the person's name and email address

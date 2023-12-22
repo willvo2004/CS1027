@@ -58,10 +58,6 @@ public class Player {
     }
 
     public boolean equals(Player other) {
-        if (this.name.equals(other.name) && this.jerseyNum == other.jerseyNum) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.name.equals(other.name) && this.jerseyNum == other.jerseyNum;
     }
 }

@@ -3,7 +3,7 @@ public class Snail {
 	
 	public static char icon = '@';
 	private int position;
-	private QueueADT<Integer> movePattern;
+	private final QueueADTa<Integer> movePattern;
 	
 	public Snail (int[] pattern) {
 		position = 0;
